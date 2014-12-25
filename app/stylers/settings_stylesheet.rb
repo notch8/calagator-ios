@@ -1,0 +1,3 @@
+class SettingsStylesheet < ApplicationStylesheet
+
+end
