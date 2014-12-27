@@ -27,10 +27,16 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     color.add_named :dark_gray,  '#82C555'
     color.add_named :light_green, '#8DC555'
     color.add_named :baby_blue, '#E8FBFE'
+
   end
 
   def root_view(st)
     st.background_color = color.white
+  end
+
+  def nav_bar(st) 
+    puts "in nav bar style"
+    st.view.appearance.barTintColor = color.light_green
   end
 
   def standard_button(st)

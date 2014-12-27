@@ -4,7 +4,7 @@ module Events
     end
 
     def event_title(st)
-      st.frame = {top: 100, width: app_width - 20, height: 20, centered: :horizontal}
+      st.frame = {top: 70, width: app_width - 20, height: 20, centered: :horizontal}
       st.color = color.battleship_gray
       st.view.fit_to_size(24)
     end
@@ -20,28 +20,38 @@ module Events
       st.background_color = color.baby_blue
     end
 
-    def venue_location(st)
+    def venue_title(st)
       st.frame = {top: 10, width: app_width - 20, height: 20, centered: :horizontal}
       st.color = color.battleship_gray
       st.view.fit_to_size(24)
     end
 
     def venue_address(st)
-      st.frame = {top: 30, width: app_width - 20, height: 20, centered: :horizontal}
+      st.frame = {top: st.prev_frame.bottom, width: app_width - 20, height: 20, centered: :horizontal}
       st.color = color.battleship_gray
       st.view.fit_to_size(24)
     end
 
     def venue_details(st)
-      st.frame = {top: 50, width: app_width - 20, height: 20, centered: :horizontal}
+      st.frame = {top: st.prev_frame.bottom, width: app_width - 20, height: 20, centered: :horizontal}
       st.color = color.battleship_gray
       st.view.fit_to_size(24)
     end
 
+    def venue_map(st)
+      st.frame = {top: st.prev_frame.bottom, width: app_width - 20, height: 120, centered: :horizontal}
+      st.view.mapType = MKMapTypeStandard
+      st.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight
+      st.view.zoomEnabled = true
+    end
+
     def event_description(st)
-      st.frame = {top: 500, width: app_width - 20, height: 200, centered: :horizontal}
+      st.frame = {top: 280, width: app_width - 20, height: 800, centered: :horizontal}
       st.color = color.battleship_gray
-      st.font = font.small
+      st.font = font.tiny
+      #st.view.lineBreakMode = NSLineBreakByWordWrapping
+      st.view.lineBreakMode = 0
+      st.view.numberOfLines = 0
     end
 
   end

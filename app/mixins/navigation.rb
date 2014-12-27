@@ -5,6 +5,8 @@ module Navigation
     label.text = FontAwesome.icon('list')
 
     set_nav_bar_button :left, {custom_view: label, action: :tapped_left_nav}
+
+    rmq(UINavigationBar).apply_style(:nav_bar)
   end
 
   def tapped_left_nav
