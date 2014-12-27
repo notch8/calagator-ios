@@ -23,7 +23,10 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
 
     color.add_named :tint, '236EB7'
     color.add_named :translucent_black, color.from_rgba(0, 0, 0, 0.4)
-    color.add_named :battleship_gray,   '#7F7F7F'
+    color.add_named :battleship_gray,   '#445544'
+    color.add_named :dark_gray,  '#82C555'
+    color.add_named :light_green, '#8DC555'
+    color.add_named :baby_blue, '#E8FBFE'
   end
 
   def root_view(st)

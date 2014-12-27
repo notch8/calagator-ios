@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 $:.unshift('/Library/RubyMotion/lib')
 require 'motion/project/template/ios'
+require 'bubble-wrap/core'
 require 'bundler'
 require 'sugarcube-nsdate'
-require 'bubble-wrap/core'
+require 'sugarcube-ui'
 
 Bundler.require
-
-# require 'bubble-wrap'
 
 Motion::Project::App.setup do |app|
 

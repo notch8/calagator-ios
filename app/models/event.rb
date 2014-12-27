@@ -11,6 +11,7 @@ class Event
     title: :string,
     url: :string,
     venue_id: :integer,
+    venue_title: :string,
     venue_access_notes: :string,
     venue_address: :string,
     venue_description: :string,
@@ -68,9 +69,9 @@ class Event
       if result['venue_id']
         attr_hash.merge!({
           venue_id: result['venue']['id'],
-          venue_access_notes: result['venue']['access_notes'],
+          venue_title: result['venue']['title'],
+          venue_details: result['venue_details'],
           venue_address: result['venue']['address'],
-          venue_description: result['venue']['description'],
           venue_latitude: result['venue']['latitude'],
           venue_longitude: result['venue']['longitude'],
           venue_url: result['venue']['url']

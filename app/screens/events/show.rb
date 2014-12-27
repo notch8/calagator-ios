@@ -1,7 +1,7 @@
 module Events
   class Show < PM::Screen
     include Navigation
-    title 'Calendar'
+    title 'Calagator'
 
     attr_accessor :event
 
@@ -9,12 +9,19 @@ module Events
       rmq.stylesheet = Events::ShowStylesheet
       rmq(self.view).apply_style :root_view
 
-      rmq.append(UITextView, :event_title).data(@event.title)
-      rmq.append(UITextView, :date_and_time).data(humanized_date_and_time)
-      rmq.append(UITextView, :event_description).data(@event.event_description)
-    end
+      rmq.append(UILabel).data(@event.title).apply_style(:event_title)
+      rmq.append(UILabel, :date_and_time).data(humanized_date_and_time)
+      location_container = rmq.append(UIView, :location_container)
+      location_container.append(UILabel).data(@event.venue_title).apply_style(:venue_location)
+      if @event.venue_address
+        location_container.append(UILabel).data(@event.venue_address).apply_style(:venue_address)
+      end
 
-    def will_appear
+      if @event.venue_details
+        location_container.append(UILabel).data(@event.venue_details).apply_style(:venue_details)
+      end
+
+      rmq.append(UITextView, :event_description).data(@event.event_description)
     end
 
     private
@@ -33,7 +40,7 @@ module Events
     def humanized_time(time)
       if time
         if time.string_with_format('mm') == '0'
-          time.string_with_format('HH')
+          time.string_with_format('hh')
         else
           time.string_with_format('h:mm')
         end

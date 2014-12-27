@@ -4,7 +4,7 @@ module Events
     refreshable
     searchable
 
-    title 'Calendar'
+    title 'Calagator'
 
     def on_load
       add_side_menu
