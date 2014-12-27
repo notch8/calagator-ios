@@ -7,6 +7,7 @@ module Events
     title 'Calagator'
 
     def on_load
+      rmq.stylesheet = Events::IndexStylesheet
       add_side_menu
       @events = []
       load_async

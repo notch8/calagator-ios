@@ -16,7 +16,6 @@ class AppDelegate < PM::Delegate
   def on_load(app, options)
     @menu = open MenuDrawer
     @events = Event.deserialize_from_file('events.dat')
-    rmq(UINavigationBar).apply_style(:nav_bar)
   end
 
   def show_menu

@@ -21,6 +21,7 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     font.add_named :small,    font_family, 18
     font.add_named :tiny,     font_family, 12
 
+    color.add_named :white, 'ffffff'
     color.add_named :tint, '236EB7'
     color.add_named :translucent_black, color.from_rgba(0, 0, 0, 0.4)
     color.add_named :battleship_gray,   '#445544'
@@ -28,15 +29,18 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     color.add_named :light_green, '#8DC555'
     color.add_named :baby_blue, '#E8FBFE'
 
+    UINavigationBar.appearance.setBarTintColor(color.light_green)
+    UINavigationBar.appearance.setTintColor(color.white)
+    UINavigationBar.appearance.setTitleTextAttributes(NSForegroundColorAttributeName => color.white)
+
   end
 
   def root_view(st)
     st.background_color = color.white
   end
 
-  def nav_bar(st) 
-    puts "in nav bar style"
-    st.view.appearance.barTintColor = color.light_green
+  def navigation_icon(st)
+    st.color = color.white
   end
 
   def standard_button(st)

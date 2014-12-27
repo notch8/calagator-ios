@@ -17,6 +17,6 @@ class NavigationControllerStylesheet < ApplicationStylesheet
   end
 
   def cell_label(st)
-    st.color = color.black
+    st.color = color.white
   end
 end
