@@ -7,7 +7,7 @@ class NavigationScreen < ProMotion::TableScreen
         {
           title: 'Calendar',
           action: :swap_center_controller,
-          arguments: EventsScreen
+          arguments: Events::Index
         },
         {
           title: 'Settings',

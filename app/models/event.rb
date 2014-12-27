@@ -6,7 +6,8 @@ class Event
   columns :id => :integer,
     source_id: :integer,
     event_description: :string,
-    start_time: :string,
+    start_time: :date,
+    end_time: :date,
     title: :string,
     url: :string,
     venue_id: :integer,
@@ -32,9 +33,11 @@ class Event
     def handle_results(result)
       result.object.each do |result|
         begin
-          unless self.where(:id).eq(result['id']).first
-            create_event(result)
+          if found_event = self.where(:id).eq(result['id']).first
+            found_event.destroy
           end
+
+          create_event(result)
         rescue
           puts "FAIL:"
           puts result
@@ -43,14 +46,24 @@ class Event
     end
 
     def create_event result
+      date_formatter = NSDateFormatter.alloc.init
+      date_formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ"
+
       attr_hash = {
         id: result['id'],
         source_id: result['source_id'],
         event_description: result['description'],
-        start_time: result['start_time'],
+        start_time: date_formatter.dateFromString(result['start_time']),
+        end_time: result['start_time'],
         title: result['title'],
         url: result['url']
       }
+
+      if result['end_time']
+        attr_hash.merge!({
+          end_time: date_formatter.dateFromString(result['end_time'])
+        })
+      end
 
       if result['venue_id']
         attr_hash.merge!({

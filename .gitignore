@@ -9,6 +9,14 @@
 /test/version_tmp/
 /tmp/
 
+## VIM
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
 ## Specific to RubyMotion:
 .dat*
 .repl_history

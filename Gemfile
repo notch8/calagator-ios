@@ -7,6 +7,7 @@ gem 'rake'
 gem 'ProMotion'
 gem 'ProMotion-menu'
 gem 'ruby_motion_query'
+gem 'sugarcube'
 
 # Pretty printing
 #gem 'motion_print' 

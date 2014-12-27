@@ -1,6 +1,6 @@
 class MenuDrawer < PM::Menu::Drawer
   def setup
-    self.center = EventsScreen.new(nav_bar: true)
+    self.center = Events::Index.new(nav_bar: true)
     self.left = NavigationScreen
     self.to_show = [:all]
     self.max_left_width = 250
@@ -9,6 +9,7 @@ class MenuDrawer < PM::Menu::Drawer
 end
 
 class AppDelegate < PM::Delegate
+  attr_reader :events
   #attr_reader :window
   status_bar true, animation: :fade
 
