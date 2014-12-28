@@ -17,8 +17,12 @@ module Events
       [{
         cells: @events.map do |event|
           {
-            title: event.title,
-            subtitle: event.event_description,
+            cell_class: EventCell,
+            style: {
+              title: event.title,
+              start_time: event.start_time
+            },
+            height: 70,
             action: :view_event,
             arguments: { event: event }
           }

@@ -9,11 +9,6 @@ class MainScreen < PM::Screen
     @hello_world_label = rmq.append!(UILabel, :hello_world)
   end
 
-  def will_appear
-    puts "will appear"
-  end
-
-
   #def supportedInterfaceOrientations
   #  UIInterfaceOrientationMaskAll
   #end

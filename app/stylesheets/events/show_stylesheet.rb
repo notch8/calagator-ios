@@ -49,7 +49,6 @@ module Events
       st.frame = {top: 280, width: app_width - 20, height: 800, centered: :horizontal}
       st.color = color.battleship_gray
       st.font = font.tiny
-      #st.view.lineBreakMode = NSLineBreakByWordWrapping
       st.view.lineBreakMode = 0
       st.view.numberOfLines = 0
     end

@@ -18,13 +18,14 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     font_family = 'Helvetica Neue'
     font.add_named :large,    font_family, 36
     font.add_named :medium,   font_family, 24
-    font.add_named :small,    font_family, 18
-    font.add_named :tiny,     font_family, 12
+    font.add_named :small,    font_family, 14
+    font.add_named :tiny,     font_family, 10
 
     color.add_named :white, 'ffffff'
     color.add_named :tint, '236EB7'
     color.add_named :translucent_black, color.from_rgba(0, 0, 0, 0.4)
     color.add_named :battleship_gray,   '#445544'
+    color.add_named :light_gray,   '#c3c3c3'
     color.add_named :dark_gray,  '#82C555'
     color.add_named :light_green, '#8DC555'
     color.add_named :baby_blue, '#E8FBFE'
