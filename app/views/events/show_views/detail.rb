@@ -3,7 +3,7 @@ module Events
     class Detail < PM::TableViewCell
       include TimeHelpers
       def event=(event)
-        rmq.append(UILabel, :event_date).data(humanized_date(event.start_time))
+        @event_date ||= rmq.append(UILabel, :event_date).data(humanized_date(event.start_time))
 
         time = "from #{humanized_time(event.start_time)} to #{humanized_time(event.end_time)}"
         @event_time_label ||= rmq.append(UILabel, :event_time)
