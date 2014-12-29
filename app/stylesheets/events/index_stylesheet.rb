@@ -20,11 +20,5 @@ module Events
       st.font = font.tiny
     end
 
-    def right_chevron(st)
-      st.frame = {top: 25, left: app_width - 20, width: 20, height: 20}
-      st.color = color.light_gray
-      st.font = FontAwesome.fontWithSize(18.0)
-      st.view.text = FontAwesome.icon('chevron-right')
-    end
   end
 end

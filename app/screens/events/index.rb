@@ -13,12 +13,16 @@ module Events
       load_async
     end
 
+    def on_refresh
+      load_async
+    end
+
     def table_data
       [{
         cells: @events.map do |event|
           {
             cell_class: EventCell,
-            style: {
+            properties: {
               title: event.title,
               start_time: event.start_time
             },
@@ -31,15 +35,13 @@ module Events
     end
 
     def view_event args
-      puts args
-      controller = Events::Show.new(nav_bar: true)
-      controller.event = args[:event]
-      app_delegate.menu.center_controller = controller
-
+      screen = Events::Show.new(nav_bar: true)
+      screen.event = args[:event]
+      self.navigationController.pushViewController(screen, animated: true)
     end
 
     def load_async
-      Event.async_load do |events|
+      Event.load_if_stale do |events|
         @events = events
         stop_refreshing
         update_table_data

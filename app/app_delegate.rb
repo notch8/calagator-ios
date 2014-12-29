@@ -16,6 +16,7 @@ class AppDelegate < PM::Delegate
   def on_load(app, options)
     @menu = open MenuDrawer
     @events = Event.deserialize_from_file('events.dat')
+    @alerts = Alert.deserialize_from_file('alertss.dat')
   end
 
   def show_menu

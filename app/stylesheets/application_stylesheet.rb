@@ -25,6 +25,7 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     color.add_named :tint, '236EB7'
     color.add_named :translucent_black, color.from_rgba(0, 0, 0, 0.4)
     color.add_named :battleship_gray,   '#445544'
+    color.add_named :background_gray,   '#EFEFF4'
     color.add_named :light_gray,   '#c3c3c3'
     color.add_named :dark_gray,  '#82C555'
     color.add_named :light_green, '#8DC555'
@@ -55,4 +56,12 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     st.background_color = color.clear
     st.color = color.black
   end
+
+  def right_chevron(st)
+    st.frame = {top: 25, left: app_width - 20, width: 20, height: 20}
+    st.color = color.light_gray
+    st.font = FontAwesome.fontWithSize(18.0)
+    st.view.text = FontAwesome.icon('chevron-right')
+  end
+
 end

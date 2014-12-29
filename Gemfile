@@ -1,13 +1,21 @@
 source 'https://rubygems.org'
 
 gem 'afmotion'
+gem 'bubble-wrap', :require => 'bubble-wrap/core'
+gem 'formotion'
 gem 'motion-fontawesome'
 gem 'motion_model'
+gem 'motion-takeoff'
 gem 'rake'
 gem 'ProMotion'
+gem 'ProMotion-formotion'
 gem 'ProMotion-menu'
 gem 'ruby_motion_query'
 gem 'sugarcube', :require => 'sugarcube-all'
+
+
+#for testing
+gem "webstub"
 
 # Pretty printing
 #gem 'motion_print' 

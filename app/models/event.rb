@@ -1,7 +1,10 @@
 class Event
   CALAGATOR_URL = 'http://calagator.org/events.json'
+  STALE_AFTER = 59.minutes
   include MotionModel::Model
   include MotionModel::ArrayModelAdapter
+
+  has_many :alerts
 
   columns :id => :integer,
     source_id: :integer,
@@ -20,6 +23,15 @@ class Event
     venue_url: :string
 
   class << self
+    attr_accessor :last_load
+    def load_if_stale &block
+      if !last_load || (Time.now - STALE_AFTER > last_load) 
+        async_load &block
+      else
+        block.call(self.all) if block
+      end
+    end
+
     def async_load &block
       AFMotion::JSON.get(CALAGATOR_URL) do |result|
         if result.success?
@@ -27,7 +39,7 @@ class Event
           finish_event_load
         end
 
-        block.call(self.all)
+        block.call(self.all) if block
       end
     end
 
@@ -81,6 +93,7 @@ class Event
     end
 
     def finish_event_load
+      self.last_load = Time.now
       self.serialize_to_file('events.dat')
     end
   end

@@ -13,6 +13,11 @@ class NavigationScreen < ProMotion::TableScreen
           title: 'Settings',
           action: :swap_center_controller,
           arguments: SettingsScreen
+        },
+        {
+          title: 'About',
+          action: :swap_center_controller,
+          arguments: AboutScreen
         }
       ]
     }]
