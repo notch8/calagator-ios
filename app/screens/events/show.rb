@@ -1,6 +1,5 @@
 class EventAboutHeader < UIView
   def didMoveToWindow
-    puts "moved to window"
     rmq(self).apply_style(:about_header)
   end
 end
@@ -15,17 +14,19 @@ end
 class EventMapCell < PM::TableViewCell
   def event= event
     if event.venue_longitude && event.venue_latitude
-      rmq(self).apply_style(:location_container)
-      map = MKMapView.alloc.init
+      @map ||= begin
+        rmq(self).apply_style(:location_container)
+        map = MKMapView.alloc.init
 
-      rmq(self).append(map).apply_style(:venue_map)
+        rmq(self).append(map).apply_style(:venue_map)
 
-      location = CLLocationCoordinate2DMake(event.venue_latitude, event.venue_longitude)
-      pin = MapAnnotation.alloc.initWithCoordinates(location, title: event.venue_title, subTitle: event.venue_address)
-      map.addAnnotation(pin)
+        location = CLLocationCoordinate2DMake(event.venue_latitude, event.venue_longitude)
+        pin = MapAnnotation.alloc.initWithCoordinates(location, title: event.venue_title, subTitle: event.venue_address)
+        map.addAnnotation(pin)
 
-      region = MKCoordinateRegionMake(location, MKCoordinateSpanMake(0.1, 0.1)) 
-      map.setRegion(region, animated: true)
+        region = MKCoordinateRegionMake(location, MKCoordinateSpanMake(0.1, 0.1)) 
+        map.setRegion(region, animated: true)
+      end
     end
   end
 end
@@ -42,27 +43,34 @@ class EventDetailCell < PM::TableViewCell
     rmq.append(UILabel, :event_date).data(humanized_date(event.start_time))
 
     time = "from #{humanized_time(event.start_time)} to #{humanized_time(event.end_time)}"
-    rmq.append(UILabel, :event_time).data(time)
-    rmq.append(UILabel, :event_location).data(event.venue_title)
+    @event_time_label ||= rmq.append(UILabel, :event_time)
+    @event_time_label.data(time)
+
+    @event_location_label ||= rmq.append(UILabel, :event_location)
+    @event_location_label.data(event.venue_title)
   end
 
 end
 
 class EventReminderSummaryCell < PM::TableViewCell
   def event=(event)
-    rmq.append(UILabel, :label).data("Alert")
-    rmq.append(UILabel, :right_chevron)
+    @alert_label ||= rmq.append(UILabel, :label).data("Alert")
+    @right_cevron ||= rmq.append(UILabel, :right_chevron)
 
     if event.alerts.length == 0
-      rmq.append(UILabel, :setting).data("No alerts")
+      text = "No alerts"
+    else
+      text = event.alerts.all.map{|a| a.alert_type.capitalize}.join(", ")
     end
+    @setting_label ||= rmq.append(UILabel, :setting)
+    @setting_label.data(text)
   end
 end
 
 class EventSeriesSummaryCell < PM::TableViewCell
   def event=(event)
-    rmq.append(UILabel, :right_chevron)
-    rmq.append(UILabel, :label).data("Series")
+    @right_chevron ||= rmq.append(UILabel, :right_chevron)
+    @series_label ||= rmq.append(UILabel, :label).data("Series")
   end
 end
 
@@ -75,6 +83,11 @@ module Events
 
     def on_load
       rmq.stylesheet = Events::ShowStylesheet
+      NSNotificationCenter.defaultCenter.tap do |dc|
+        dc.addObserver(self, selector:'dataDidChange:',
+                        name:'MotionModelDataDidChangeNotification',
+                        object:nil)
+      end
     end
 
     def table_data
@@ -134,13 +147,16 @@ module Events
     end
 
     def view_alerts args
-      puts self.navigationController
       screen = Alerts::Edit.new(event: @event, nav_bar: true)
       self.navigationController.pushViewController(screen, animated: true)
     end
 
     def view_series args
       puts "view series"
+    end
+
+    def dataDidChange notification
+      self.view.reloadData
     end
 
 
