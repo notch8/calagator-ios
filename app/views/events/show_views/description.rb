@@ -1,6 +1,6 @@
 module Events
   module ShowViews
-    class MapSection < PM::TableViewCell
+    class Description < PM::TableViewCell
       def event= event
       end
     end

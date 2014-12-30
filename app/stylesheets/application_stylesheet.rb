@@ -41,6 +41,10 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     st.background_color = color.white
   end
 
+  def line(st)
+    st.background_color = color.background_gray
+    st.frame = {t: st.prev_frame.bottom , l: 20, w: app_width - 20, h: 1}
+  end
   def navigation_icon(st)
     st.color = color.white
   end
