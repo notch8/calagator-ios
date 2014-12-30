@@ -7,6 +7,8 @@ module Events
       st.background_color = color.background_gray
     end
 
+
+    #sections of screen
     def title_container(st)
       st.frame = {top: 35, width: 0, height: 0, left: 0}
       st.background_color = color.white
@@ -17,11 +19,40 @@ module Events
       st.frame = {top: st.prev_frame.bottom, width: app_width, height: 120, left: 0}
     end
 
-    def actions_container(st)
-      st.frame = {top: 300, width: app_width, height: 80, left: 0}
+    def alerts_container(st)
+      st.frame = {top: 300, width: app_width, height: 42, left: 0}
       st.background_color = color.white
     end
 
+    def series_container(st)
+      st.frame = {top: 342, width: app_width, height: 40, left: 0}
+      st.background_color = color.white
+    end
+
+    def event_description(st)
+      st.frame = {
+        below_prev: 30,
+        width: app_width - 40, 
+        height: 0,
+        left: 20
+      }
+
+      description_paragraph st
+    end
+
+    def venue_description(st)
+      st.frame = {
+        top: 30,
+        width: app_width - 40, 
+        height: 0,
+        left: 20
+      }
+
+      description_paragraph st
+    end
+
+
+    #elements
     def event_title(st)
       st.frame = {top: 10, width: app_width - 40, height: 0, left: 20}
       st.color = color.battleship_gray
@@ -63,11 +94,6 @@ module Events
       st.view.fit_to_size(24)
     end
 
-    def label_base(st)
-      st.color = color.battleship_gray
-      st.font = font.small
-    end
-
     def label(st)
       label_base(st)
       st.frame = {top: 10, width: 100, height: 20, left: 20}
@@ -90,6 +116,14 @@ module Events
       st.text_alignment = NSTextAlignmentRight
     end
 
+
+    #helpers
+    def label_base(st)
+      st.color = color.battleship_gray
+      st.font = font.small
+    end
+
+
     def description_container(st)
       st.background_color = color.background_gray
     end
@@ -104,26 +138,5 @@ module Events
       puts st.frame.h 
     end
 
-    def event_description(st)
-      st.frame = {
-        top: 0,
-        width: app_width - 40, 
-        height: 0,
-        left: 20
-      }
-
-      description_paragraph st
-    end
-
-    def venue_description(st)
-      st.frame = {
-        top: 30,
-        width: app_width - 40, 
-        height: 0,
-        left: 20
-      }
-
-      description_paragraph st
-    end
   end
 end
