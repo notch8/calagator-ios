@@ -135,7 +135,6 @@ module Events
       st.font = font.small
       st.view.sizeToFit
       st.color = color.battleship_gray
-      puts st.frame.h 
     end
 
   end
