@@ -3,100 +3,100 @@ module Events
     def layout
       add UIScrollView, :scroll_view do
         background_color rmq.color.background_gray
+        target.scrollEnabled = true
 
-        add UIView, :title do
-          background_color rmq.color.white
+        add UIView, :content_view do
+          add UIView, :title do
+            background_color rmq.color.white
 
-          add UILabel, :event_title do 
+            add UILabel, :event_title do 
+              color rmq.color.battleship_gray
+              font rmq.font.small
+              target.numberOfLines = 0
+              size_to_fit
+            end
+
+            add UILabel, :title_line do
+              background_color rmq.color.background_gray
+            end
+
+            add UILabel, :event_date do 
+              color rmq.color.battleship_gray
+              font rmq.font.tiny
+            end
+
+            add UILabel, :event_time do
+              color rmq.color.battleship_gray
+              font rmq.font.tiny
+            end
+
+            add UILabel, :event_location do
+              color rmq.color.battleship_gray
+              font rmq.font.tiny
+            end
+          end
+
+          add MKMapView, :venue_map
+
+          add UIView, :actions_container do
+            background_color rmq.color.white
+
+            add UIView, :alert_container do
+              add UILabel, :alert_label do
+                color rmq.color.battleship_gray
+                text "Alerts"
+              end
+
+              add UILabel, :alert_settings do
+                color rmq.color.light_gray
+                text_alignment NSTextAlignmentRight
+                font rmq.font.tiny
+              end
+
+              add UILabel, :alert_right_chevron do
+                color rmq.color.light_gray
+                font  FontAwesome.fontWithSize(18.0)
+                text  FontAwesome.icon('chevron-right')
+              end
+            end
+
+            add UILabel, :actions_line do
+              background_color rmq.color.background_gray
+            end
+
+            add UIView, :series_container do
+              add UILabel, :series_label do
+                color rmq.color.battleship_gray
+                text "Series"
+              end
+
+              add UILabel, :series_settings do
+                color rmq.color.light_gray
+                text "Placeholder"
+                text_alignment NSTextAlignmentRight
+                font rmq.font.tiny
+              end
+
+              add UILabel, :series_right_chevron do
+                color rmq.color.light_gray
+                font  FontAwesome.fontWithSize(18.0)
+                text  FontAwesome.icon('chevron-right')
+              end
+            end
+          end
+
+          add UILabel, :event_description do
             color rmq.color.battleship_gray
-            font rmq.font.small
-            text "An Event"
+            target.numberOfLines = 0
+            size_to_fit
+            text "dsffafdasdfasfsadfsafsafa"
+          end
+
+          add UILabel, :venue do
+            color rmq.color.battleship_gray
+            target.numberOfLines = 0
             size_to_fit
           end
-
-          add UILabel, :title_line do
-            background_color rmq.color.background_gray
-          end
-
-          add UILabel, :event_date do 
-            color rmq.color.battleship_gray
-            font rmq.font.tiny
-            text "January 1st. 2015"
-          end
-
-          add UILabel, :event_time do
-            color rmq.color.battleship_gray
-            font rmq.font.tiny
-            text "from 1pm to 2pm"
-          end
-
-          add UILabel, :event_location do
-            color rmq.color.battleship_gray
-            font rmq.font.tiny
-            text "Notch8 Intergalactic"
-          end
-        end
-
-        add MKMapView, :venue_map
-
-        add UIView, :actions_container do
-          background_color rmq.color.white
-
-          add UIView, :alert_container do
-            add UILabel, :alert_label do
-              color rmq.color.battleship_gray
-              text "Alerts"
-            end
-
-            add UILabel, :alert_settings do
-              color rmq.color.light_gray
-              text "Morning, Starting"
-              text_alignment NSTextAlignmentRight
-              font rmq.font.tiny
-            end
-
-            add UILabel, :alert_right_chevron do
-              color rmq.color.light_gray
-              font  FontAwesome.fontWithSize(18.0)
-              text  FontAwesome.icon('chevron-right')
-            end
-          end
-
-          add UIView, :actions_line do
-            background_color rmq.color.background_gray
-          end
-
-          add UIView, :series_container do
-            add UILabel, :series_label do
-              color rmq.color.battleship_gray
-              text "Series"
-            end
-
-            add UILabel, :series_settings do
-              color rmq.color.light_gray
-              text "Placeholder"
-              text_alignment NSTextAlignmentRight
-              font rmq.font.tiny
-            end
-
-            add UILabel, :series_right_chevron do
-              color rmq.color.light_gray
-              font  FontAwesome.fontWithSize(18.0)
-              text  FontAwesome.icon('chevron-right')
-            end
-          end
-        end
-
-        add UILabel, :event_description do
-          color rmq.color.battleship_gray
-          size_to_fit
-          text "dsfasfsafas"
-        end
-
-        add UILabel, :venue do
-          color rmq.color.battleship_gray
-          size_to_fit
-          text "sdfafad"
         end
       end
     end
@@ -104,8 +104,18 @@ module Events
     def add_constraints
       constraints(:scroll_view) do
         top_left x:0, y: 0
-        width.equals(view)
-        height.equals(view)
+        leading 0
+        trailing 0
+        width.equals(:superview)
+        height.equals(:superview)
+      end
+
+      constraints(:content_view) do
+        top 0
+        bottom 0
+        leading 0
+        trailing 0
+        width.equals(:superview)
       end
 
       constraints(:title) do
@@ -224,13 +234,14 @@ module Events
       constraints(:event_description) do
         top.equals(:series_container, NSLayoutAttributeBottom).plus(30)
         left 20
-        width.equals(view).minus(20)
+        width.equals(:superview).minus(40)
       end
 
       constraints(:venue) do
         top.equals(:event_description, NSLayoutAttributeBottom).plus(20)
         left 20
         width.equals(:event_description)
+        bottom 0
       end
     end
   end
