@@ -6,6 +6,8 @@ Bundler.require
 
 require 'bubble-wrap/core'
 require 'bundler'
+require 'sugarcube-nsdate'
+require 'sugarcube-numbers'
 
 Motion::Project::App.setup do |app|
 

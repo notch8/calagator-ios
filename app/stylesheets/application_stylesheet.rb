@@ -42,6 +42,10 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     st.view.size_to_fit
   end
 
+  def root_scroll_view(st)
+    st.background_color = color.background_gray
+  end
+
   def line(st)
     st.background_color = color.background_gray
     st.frame = {t: st.prev_frame.bottom , l: 20, w: app_width - 20, h: 1}

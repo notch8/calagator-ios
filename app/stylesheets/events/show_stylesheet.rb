@@ -42,7 +42,7 @@ module Events
 
     def venue_description(st)
       st.frame = {
-        top: 30,
+        below_prev: 30,
         width: app_width - 40, 
         height: 0,
         left: 20
@@ -50,7 +50,6 @@ module Events
 
       description_paragraph st
     end
-
 
     #elements
     def event_title(st)
@@ -121,11 +120,6 @@ module Events
     def label_base(st)
       st.color = color.battleship_gray
       st.font = font.small
-    end
-
-
-    def description_container(st)
-      st.background_color = color.background_gray
     end
 
     def description_paragraph(st)
