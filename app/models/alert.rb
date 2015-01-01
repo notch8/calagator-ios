@@ -73,7 +73,6 @@ class Alert
     def has_permission?
       app = UIApplication.sharedApplication
       granted_settings = app.currentUserNotificationSettings
-      puts "granted_settings.types: #{granted_settings.types}"
       granted_settings.types == UIUserNotificationTypeAlert
     end
 

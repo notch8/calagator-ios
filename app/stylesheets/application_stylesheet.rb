@@ -18,8 +18,8 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
     font_family = 'Helvetica Neue'
     font.add_named :large,    font_family, 36
     font.add_named :medium,   font_family, 24
-    font.add_named :small,    font_family, 14
-    font.add_named :tiny,     font_family, 10
+    font.add_named :small,    font_family, 18
+    font.add_named :tiny,     font_family, 14
 
     color.add_named :white, 'ffffff'
     color.add_named :tint, '236EB7'
@@ -39,6 +39,16 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
 
   def root_view(st)
     st.background_color = color.white
+    st.view.size_to_fit
+  end
+
+  def root_scroll_view(st)
+    st.background_color = color.background_gray
+  end
+
+  def line(st)
+    st.background_color = color.background_gray
+    st.frame = {t: st.prev_frame.bottom , l: 20, w: app_width - 20, h: 1}
   end
 
   def navigation_icon(st)

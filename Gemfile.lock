@@ -49,6 +49,7 @@ GEM
       netrc (= 0.7.8)
     cocoapods-try (0.4.2)
     colored (1.2)
+    dbt (1.1.5)
     escape (0.0.4)
     formotion (1.8)
       bubble-wrap (>= 1.4.0)
@@ -64,6 +65,8 @@ GEM
       cocoapods (>= 0.34)
     motion-fontawesome (0.0.1)
       rake
+    motion-kit (0.17.0)
+      dbt (~> 1.1.5)
     motion-require (0.2.0)
     motion-support (0.2.6)
       motion-require (>= 0.0.6)
@@ -97,6 +100,7 @@ DEPENDENCIES
   bubble-wrap
   formotion
   motion-fontawesome
+  motion-kit
   motion-takeoff
   motion_model
   rake

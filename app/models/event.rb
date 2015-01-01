@@ -17,7 +17,7 @@ class Event
     venue_title: :string,
     venue_access_notes: :string,
     venue_address: :string,
-    venue_description: :string,
+    venue_details: :string,
     venue_latitude: :string,
     venue_longitude: :string,
     venue_url: :string
