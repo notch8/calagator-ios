@@ -24,6 +24,27 @@ describe 'Event' do
 
   end
 
+  it "should update event" do
+    Event.async_load do |result|
+      resume
+    end
+
+    wait_max 1.0 do
+
+      before_update = Event.first
+   
+      Event.async_load do |result|
+        resume
+      end
+
+      wait_max 1.0 do
+        Event.first.should == before_update
+      end
+    end
+
+
+  end
+
   #it "should not load events if current" do
   #  Event.last_load = Time.now - 59.minutes
   #  Event.load_if_stale

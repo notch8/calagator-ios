@@ -45,20 +45,20 @@ class Event
 
     def handle_results(result)
       result.object.each do |result|
-        begin
+        #begin
           if found_event = self.where(:id).eq(result['id']).first
-            found_event.destroy
+            found_event.update_attributes(event_attrs_hash(result))
+          else
+            self.create(event_attrs_hash(result))
           end
-
-          create_event(result)
-        rescue
-          puts "FAIL:"
-          puts result
-        end
+        #rescue
+        #  puts "FAIL:"
+        #  puts result
+        #end
       end
     end
 
-    def create_event result
+    def event_attrs_hash result
       date_formatter = NSDateFormatter.alloc.init
       date_formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZ"
 
@@ -89,7 +89,7 @@ class Event
           venue_url: result['venue']['url']
         })
       end
-      self.create(attr_hash)
+      attr_hash
     end
 
     def finish_event_load
