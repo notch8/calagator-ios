@@ -3,8 +3,8 @@ class Event
   STALE_AFTER = 59.minutes
   include MotionModel::Model
   include MotionModel::ArrayModelAdapter
+  include MotionModel::Validatable
 
-  has_many :alerts
 
   columns :id => :integer,
     source_id: :integer,
@@ -21,6 +21,10 @@ class Event
     venue_latitude: :string,
     venue_longitude: :string,
     venue_url: :string
+
+  has_many :alerts
+
+  #validate :start_time, presence: true
 
   class << self
     attr_accessor :last_load
@@ -45,16 +49,16 @@ class Event
 
     def handle_results(result)
       result.object.each do |result|
-        #begin
+        begin
           if found_event = self.where(:id).eq(result['id']).first
             found_event.update_attributes(event_attrs_hash(result))
           else
             self.create(event_attrs_hash(result))
           end
-        #rescue
-        #  puts "FAIL:"
-        #  puts result
-        #end
+        rescue
+          puts "FAIL:"
+          puts result
+        end
       end
     end
 
@@ -93,8 +97,28 @@ class Event
     end
 
     def finish_event_load
+      truncate_list
       self.last_load = Time.now
       self.serialize_to_file('events.dat')
+    end
+
+    def truncate_list
+      #remove past events
+      Event.all.each do |event|
+        if event.start_time < Time.now
+          event.destroy
+        end
+      end
+
+      #remove farthest out in the future
+      if Event.count > 50
+        events = Event.order{|one, two| one.start_time <=> two.start_time}
+        (Event.count - 50).times{ events.last.destroy }
+      end
+    end
+
+    def factory attrs = {}
+      self.create!({id: Time.now.usec, start_time: 2.days.hence, end_time: 2.days.hence + 2.hours}.merge(attrs))
     end
   end
 end
