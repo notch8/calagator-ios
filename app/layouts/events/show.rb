@@ -120,7 +120,6 @@ module Events
 
       constraints(:title) do
         top_left x: 0, y: 40
-        height 120
         width.equals(view)
       end
 
@@ -132,7 +131,6 @@ module Events
       constraints(:title_line) do
         top.equals(:event_title, NSLayoutAttributeBottom).plus(10)
         left 20
-        #left.equals(:event_title)
         height 2
         width.equals(view).minus(20)
       end
@@ -156,6 +154,7 @@ module Events
         left.equals(:event_title)
         height 20
         width.equals(view).minus(40)
+        bottom -10
       end
 
       constraints(:venue_map) do
@@ -241,7 +240,7 @@ module Events
         top.equals(:event_description, NSLayoutAttributeBottom).plus(20)
         left 20
         width.equals(:event_description)
-        bottom 0
+        bottom -10
       end
     end
   end
