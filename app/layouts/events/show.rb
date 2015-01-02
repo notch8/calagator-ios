@@ -166,7 +166,6 @@ module Events
       constraints(:actions_container) do
         top.equals(:venue_map, NSLayoutAttributeBottom).plus(30)
         left 0
-        height 82
         width.equals(view)
       end
 
@@ -174,6 +173,7 @@ module Events
         top_left x: 20, y: 10
         height 20
         width.equals(view).minus(20)
+        bottom -10 #move this to series_container when enabled
       end
 
       constraints(:alert_label) do
@@ -196,42 +196,42 @@ module Events
         width 20
       end
 
-      constraints(:actions_line) do
-        top.equals(:alert_container, NSLayoutAttributeBottom).plus(10)
-        left 20
-        height 2
-        width.equals(view).minus(20)
-      end
+      #constraints(:actions_line) do
+      #  top.equals(:alert_container, NSLayoutAttributeBottom).plus(10)
+      #  left 20
+      #  height 2
+      #  width.equals(view).minus(20)
+      #end
 
-      constraints(:series_container) do
-        top.equals(:actions_line, NSLayoutAttributeBottom).plus(10)
-        left.equals(:alert_container)
-        width.equals(:alert_container)
-        height.equals(:alert_container)
-      end
+      #constraints(:series_container) do
+      #  top.equals(:actions_line, NSLayoutAttributeBottom).plus(10)
+      #  left.equals(:alert_container)
+      #  width.equals(:alert_container)
+      #  height.equals(:alert_container)
+      #end
 
-      constraints(:series_label) do
-        top_left x: 0, y: 0
-        height.equals(:alert_label)
-        width.equals(:alert_label)
-      end
+      #constraints(:series_label) do
+      #  top_left x: 0, y: 0
+      #  height.equals(:alert_label)
+      #  width.equals(:alert_label)
+      #end
 
-      constraints(:series_settings) do
-        top 0
-        left.equals(:series_right_chevron, NSLayoutAttributeLeft).minus(200)
-        height 20
-        width 180
-      end
+      #constraints(:series_settings) do
+      #  top 0
+      #  left.equals(:series_right_chevron, NSLayoutAttributeLeft).minus(200)
+      #  height 20
+      #  width 180
+      #end
 
-      constraints(:series_right_chevron) do
-        top 4
-        left.equals(:alert_right_chevron)
-        height.equals(:alert_right_chevron)
-        width.equals(:alert_right_chevron)
-      end
+      #constraints(:series_right_chevron) do
+      #  top 4
+      #  left.equals(:alert_right_chevron)
+      #  height.equals(:alert_right_chevron)
+      #  width.equals(:alert_right_chevron)
+      #end
 
       constraints(:event_description) do
-        top.equals(:series_container, NSLayoutAttributeBottom).plus(30)
+        top.equals(:alert_container, NSLayoutAttributeBottom).plus(30)
         left 20
         width.equals(:superview).minus(40)
       end

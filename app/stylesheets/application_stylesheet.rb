@@ -16,10 +16,13 @@ class ApplicationStylesheet < RubyMotionQuery::Stylesheet
 
     # An example of setting standard fonts and colors
     font_family = 'Helvetica Neue'
-    font.add_named :large,    font_family, 36
-    font.add_named :medium,   font_family, 24
-    font.add_named :small,    font_family, 18
-    font.add_named :tiny,     font_family, 14
+    bold_font_family = 'Helvetica Neue Bold'
+    font.add_named :large, font_family, 36
+    font.add_named :medium, font_family, 24
+    font.add_named :medium_bold, bold_font_family, 24
+    font.add_named :small, font_family, 18
+    font.add_named :small_bold, bold_font_family, 18
+    font.add_named :tiny, font_family, 14
 
     color.add_named :white, 'ffffff'
     color.add_named :tint, '236EB7'
