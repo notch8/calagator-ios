@@ -45,37 +45,21 @@ describe 'Event' do
 
   describe "with 50 Events already existing" do
     before do
-      50.times do 
-        Event.factory
+      50.times do |i| 
+        Event.factory({ id: i })
       end
     end
 
-    it "should truncate list to 50 nearest events" do
-      Event.async_load do |result|
-        resume
-      end
-
-      wait_max 1.0 do
-        Event.count.should == 50
-      end
-    end
-  end
-
-  describe "with a past event" do
-    before do
-      Event.factory(start_time: 2.days.ago)
-    end
-
-    it "should truncate any events that have already happened" do
+    it "should remove ids not in loaded events" do
       Event.async_load do |result|
         resume
       end
 
       wait_max 1.0 do
         Event.count.should == 1
-        Event.last.event_description.should == "event description"
       end
     end
+
   end
 
   #it "should not load events if current" do

@@ -39,16 +39,16 @@ class Event
     def async_load &block
       AFMotion::JSON.get(CALAGATOR_URL) do |result|
         if result.success?
-          handle_results(result)
-          finish_event_load
+          handle_results(result.object)
+          finish_event_load(result.object)
         end
 
         block.call(self.all) if block
       end
     end
 
-    def handle_results(result)
-      result.object.each do |result|
+    def handle_results(loaded_events)
+      loaded_events.each do |result|
         begin
           if found_event = self.where(:id).eq(result['id']).first
             found_event.update_attributes(event_attrs_hash(result))
@@ -96,25 +96,20 @@ class Event
       attr_hash
     end
 
-    def finish_event_load
-      truncate_list
+    def finish_event_load result
+      clear_removed_events(result)
       self.last_load = Time.now
       self.serialize_to_file('events.dat')
     end
 
-    def truncate_list
-      #remove past events
-      Event.all.each do |event|
-        if event.start_time < Time.now
-          event.destroy
+    def clear_removed_events(loaded_events)
+      ids = loaded_events.collect{|o| o["id"]}
+      to_remove = Event.all.collect do |event|
+        if ids.index(event.id).nil?
+          event
         end
       end
-
-      #remove farthest out in the future
-      if Event.count > 50
-        events = Event.order{|one, two| one.start_time <=> two.start_time}
-        (Event.count - 50).times{ events.last.destroy }
-      end
+      to_remove.compact.each{ |e| e.destroy }
     end
 
     def factory attrs = {}
