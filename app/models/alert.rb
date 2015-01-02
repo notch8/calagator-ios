@@ -31,7 +31,7 @@ class Alert
   def update_alert
     has_or_gets_permission
     Takeoff::Reminders.schedule(
-      body: "#{self.event.title} is starting.",
+      body: alert_title,
       fire_date: alert_date,
       user_info: { uid: notification_id },
       badge_number: 1
@@ -39,6 +39,10 @@ class Alert
   end
   
   private
+
+    def settings
+      @settings ||= AlertSettings.new
+    end
 
     def has_or_gets_permission
       unless has_permission?
@@ -59,15 +63,25 @@ class Alert
     end
 
     def morning_alert_date
-      self.event.start_time.start_of_day + 7.hours
+      self.event.start_time.start_of_day + settings.morning_alert_time.hours
     end
 
     def beforehand_alert_date
-      self.event.start_time - 20.minutes
+      self.event.start_time - settings.beforehand_alert_time.minutes
     end
 
     def starting_alert_date
       self.event.start_time
+    end
+
+    def alert_title
+      if self.alert_type == 'morning'
+        "#{self.event.title} is today."
+      elsif self.alert_type == 'beforehand'
+        "#{self.event.title} will begin shortly."
+      else
+        "#{self.event.title} is starting."
+      end
     end
 
     def has_permission?

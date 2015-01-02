@@ -28,7 +28,6 @@ class SettingsScreen < PM::FormotionScreen
           }
         end
       },
-
       {
         title: "Beforehand Alerts",
         key: :beforehand_alert_time,
