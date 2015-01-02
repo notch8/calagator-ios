@@ -10,6 +10,11 @@ class NavigationScreen < ProMotion::TableScreen
           arguments: Events::Index
         },
         {
+          title: 'My Events',
+          action: :swap_center_controller,
+          arguments: Alerts::Index
+        },
+        {
           title: 'Settings',
           action: :swap_center_controller,
           arguments: SettingsScreen
