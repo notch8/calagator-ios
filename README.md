@@ -40,3 +40,14 @@ Contribution Guidelines
 1. Everything should be tested.  Write a failing spec before you write production code.
 2. The app uses Auto Layout, so please make sure that you code looks great on all device sizes, and in all orientations.
 3. Specs and documentation are equally valued contributions.  Please help where you can.
+
+
+Wishlist
+---------
+1. add ability to remove all alerts
+2. embiggen map on event show
+3. add link to questions/feedback
+4. fix bug wiping out alerts on data refresh
+5. fix bug in label of my events
+6. add space to top of nav menu
+7. change menu background to dark gray
