@@ -9,17 +9,13 @@ Calagator is The tech calendar for meetups, events, and happenings around the Po
 Features
 ----------
 
-|List of Upcomming events|Event Details|
-|---|---|
-| ![event list](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/list.png)| ![details](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/details.png)|
+|List of Upcomming events|Event Details|Set Alerts for Events|
+|---|---|---|
+| ![event list](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/list.png)| ![details](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/details.png)| ![alerts](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/alerts.png)|
 
-|Set Alerts for Events|Customize Alerts|
+|Customize Alerts|All devices, and Landscape view supported|
 |---|---|
-| ![alerts](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/alerts.png)| ![customize](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/options.png)|
-
-|All devices, and Landscape view supported|
-|---|
-| ![landscape](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/landscape.png) |
+|![customize](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/options.png)| ![landscape](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/landscape.png) |
 
 
 How can you get involved?
