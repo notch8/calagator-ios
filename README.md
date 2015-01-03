@@ -49,5 +49,4 @@ Wishlist
 3. add link to questions/feedback
 4. fix bug wiping out alerts on data refresh
 5. fix bug in label of my events
-6. add space to top of nav menu
-7. change menu background to dark gray
+6. change menu background to dark gray

@@ -6,6 +6,10 @@ module Navigation
     label.color = rmq.color.white
 
     set_nav_bar_button :left, {custom_view: label, action: :tapped_left_nav}
+
+    rmq(label).on(:tap) do |sender|
+      app_delegate.menu.show(:left)
+    end
   end
 
   def tapped_left_nav

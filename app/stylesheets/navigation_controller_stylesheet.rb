@@ -6,7 +6,7 @@ class NavigationControllerStylesheet < ApplicationStylesheet
   end
 
   def table(st)
-    st.background_color = color.gray
+    st.top = 60
   end
 
   def navigation_cell_height

@@ -1,9 +1,20 @@
 class NavigationScreen < ProMotion::TableScreen
+  def on_load
+    rmq.stylesheet = NavigationControllerStylesheet
+    rmq(self.view).apply_style(:table)
+  end
+
+  def tapped_right_nav
+    app_delegate.menu.hide
+  end
 
   def table_data
     [{
       title: nil,
       cells: [
+        { 
+          title: ''
+        },
         {
           title: 'Calendar',
           action: :swap_center_controller,
