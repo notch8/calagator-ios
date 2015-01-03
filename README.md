@@ -10,13 +10,16 @@ Features
 ----------
 
 |List of Upcomming events|Event Details|
-| ![event list](http://content.screencast.com/users/mclark8/folders/Jing/media/17b38aa9-4420-4745-988a-79e4f570507a/00000227.png)| ![details](http://content.screencast.com/users/mclark8/folders/Jing/media/91b92f91-66a2-4cb0-aa95-bfd066654e92/00000228.png)|
+|---|---|
+| ![event list](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/list.png)| ![details](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/details.png)|
 
 |Set Alerts for Events|Customize Alerts|
-| ![alerts](http://content.screencast.com/users/mclark8/folders/Jing/media/5e83bc31-af34-4608-ab2f-27f9daff51f8/00000229.png)| ![customize](http://content.screencast.com/users/mclark8/folders/Jing/media/4aeb8f30-03d5-4c9c-b0ba-7b1f08aa779a/00000230.png)|
+|---|---|
+| ![alerts](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/alerts.png)| ![customize](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/options.png)|
 
 |All devices, and Landscape view supported|
-| ![landscape](http://content.screencast.com/users/mclark8/folders/Jing/media/d464d69e-1048-4905-a212-dd4e240988fd/00000231.png) |
+|---|
+| ![landscape](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/landscape.png) |
 
 
 How can you get involved?
