@@ -9,13 +9,28 @@ module Events
     def on_load
       rmq.stylesheet = Events::IndexStylesheet
       add_side_menu
-      @events = []
+      @events ||= []
       load_async
     end
 
     def on_refresh
-      load_async
+      Event.async_load do |events|
+        handle_events events
+      end
     end
+
+    def load_async
+      Event.load_if_stale do |events|
+        handle_events events
+      end
+    end
+
+    def handle_events events
+      @events = events
+      stop_refreshing
+      update_table_data
+    end
+
 
     def table_data
       [{
@@ -40,12 +55,5 @@ module Events
       self.navigationController.pushViewController(screen, animated: true)
     end
 
-    def load_async
-      Event.load_if_stale do |events|
-        @events = events
-        stop_refreshing
-        update_table_data
-      end
-    end
   end
 end
