@@ -13,7 +13,7 @@ module Alerts
         title: nil,
         cells: events.map do |event|
           {
-            title: event.event_description,
+            title: event.title,
             action: :alert_choosen,
             arguments: { event: event }
           }

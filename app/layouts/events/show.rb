@@ -160,7 +160,7 @@ module Events
       constraints(:venue_map) do
         top.equals(:title, NSLayoutAttributeBottom)
         width.equals(view)
-        height 120
+        height 180
       end
 
       constraints(:actions_container) do

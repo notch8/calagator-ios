@@ -37,7 +37,6 @@ class Event
     end
 
     def async_load &block
-      puts 'async load'
       AFMotion::JSON.get(CALAGATOR_URL) do |result|
         if result.success?
           handle_results(result.object)
@@ -54,11 +53,9 @@ class Event
       loaded_events.each do |result|
         begin
           if found_event = self.where(:id).eq(result['id']).first
-            puts "found this event: #{result['id']}"
             found_event.update_attributes(event_attrs_hash(result))
           else
             self.create(event_attrs_hash(result))
-            puts "created this event: #{result['id']}"
           end
         rescue
           puts "FAIL:"
