@@ -30,7 +30,7 @@ class Alert
 
   def update_alert
     has_or_gets_permission
-    Takeoff::Reminders.schedule(
+    t = Takeoff::Reminders.schedule(
       body: alert_title,
       fire_date: alert_date,
       user_info: { uid: notification_id },
