@@ -45,7 +45,5 @@ Contribution Guidelines
 Wishlist
 ---------
 1. add ability to remove all alerts
-2. embiggen map on event show
-3. add link to questions/feedback
-4. fix bug in label of my events
-5. change menu background to dark gray
+2. add link to questions/feedback
+3. change menu background to dark gray
