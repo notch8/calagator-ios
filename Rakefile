@@ -6,6 +6,7 @@ Bundler.require
 
 require 'bubble-wrap/core'
 require 'bundler'
+require 'sugarcube-factories'
 require 'sugarcube-nsdate'
 require 'sugarcube-numbers'
 

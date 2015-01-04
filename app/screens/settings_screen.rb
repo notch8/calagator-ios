@@ -4,6 +4,19 @@ class SettingsScreen < PM::FormotionScreen
 
   def on_load
     add_side_menu
+
+    self.form.row(:remove_alerts).on_tap do |row|
+      puts "tappity"
+      UIAlertView.alert('Please Confirm', 'Are you sure you want to remove all your event alerts?',
+        buttons: {
+          cancel: 'No!',
+          success: 'Remove them'
+        }) do |button|
+          if button == :success
+            Alert.destroy_all
+          end
+        end
+    end
   end
 
   def on_submit(_form)
@@ -40,6 +53,13 @@ class SettingsScreen < PM::FormotionScreen
             type: :check
           }
         end
+      },
+      {
+        rows: [{
+          title: "Remove alerts for all events",
+          type: :button,
+          key: :remove_alerts
+        }]
       },
       {
         rows: [{

@@ -44,6 +44,5 @@ Contribution Guidelines
 
 Wishlist
 ---------
-1. add ability to remove all alerts
-2. add link to questions/feedback
-3. change menu background to dark gray
+1. add link to questions/feedback
+2. change menu background to dark gray
