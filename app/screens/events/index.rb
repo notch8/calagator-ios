@@ -39,8 +39,9 @@ module Events
             cell_class: EventCell,
             properties: {
               title: event.title,
-              start_time: event.start_time
+              start_time: event.start_time,
             },
+            search_text: event.title,
             height: 70,
             action: :view_event,
             arguments: { event: event }
