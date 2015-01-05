@@ -45,7 +45,7 @@ describe 'Alert' do
   end
 
   it "should set alert for beginning of day + settings offset if type is 'morning'" do
-    settings = AlertSettings.new
+    settings = UserSettings.new
     settings.morning_alert_time = 30
 
     alert = Alert.new(event: @event, alert_type: 'morning')
@@ -69,7 +69,7 @@ describe 'Alert' do
   end
 
  it "should set alert for beforehand if type is 'morning'" do
-    settings = AlertSettings.new
+    settings = UserSettings.new
     target_alert_time = @event.start_time - settings.beforehand_alert_time.minutes
     alert = Alert.new(event: @event, alert_type: 'beforehand')
     alert.update_alert
@@ -88,7 +88,7 @@ describe 'Alert' do
   end
 
  it "should set alert for start_time if type is 'start'" do
-    settings = AlertSettings.new
+    settings = UserSettings.new
     alert = Alert.new(event: @event, alert_type: 'start')
     alert.update_alert
     UIApplication.sharedApplication.scheduledLocalNotifications

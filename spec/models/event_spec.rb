@@ -2,9 +2,10 @@ describe 'Event' do
   extend WebStub::SpecHelpers
 
   before do
+    settings = UserSettings.new
     Event.delete_all
     disable_network_access!
-    @stubbed_request = stub_request(:get, Event::CALAGATOR_URL).
+    @stubbed_request = stub_request(:get, settings.base_url).
       to_return(json: '[{"created_at":"2014-12-18T16:11:01-08:00","description":"event description","duplicate_of_id":null,"end_time":"2014-12-30T17:00:00-08:00","id":1250467520,"rrule":null,"source_id":null,"start_time":"2016-12-30T14:00:00-08:00","title":"Introduction to Programming","updated_at":"2014-12-18T16:11:01-08:00","url":"http://learnhowtoprogram.com","venue_details":"","venue_id":202394035,"version":null,"venue":{"access_notes":"","address":"208 SW 5th Ave, Portland, OR 97204","closed":false,"country":"US","created_at":"2013-09-06T08:08:08-07:00","description":"Epicodus is a four month, forty hour per week, in-person class on programming.\r\n\r\nOur space is available usually at no charge evenings and weekends for meet ups, speakers and events. Contact us to see if the schedule is open!","duplicate_of_id":null,"email":"hi@epicodus.com","events_count":26,"id":202394035,"latitude":"45.5218383","locality":"Portland","longitude":"-122.6756462","postal_code":"97204","region":"Oregon","source_id":null,"street_address":"208 SW 5th Ave","telephone":"","title":"Epicodus","updated_at":"2014-04-16T09:21:10-07:00","url":"http://www.epicodus.com/","wifi":false}}]')
   end
 

@@ -26,7 +26,7 @@ class SettingsScreen < PM::FormotionScreen
   end
 
   def table_data
-    @settings = AlertSettings.new
+    @settings = UserSettings.new
     {
       sections: [{
         title: "Morning Alerts",

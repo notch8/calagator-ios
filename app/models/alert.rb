@@ -42,7 +42,7 @@ class Alert
   private
 
     def settings
-      @settings ||= AlertSettings.new
+      @settings ||= UserSettings.new
     end
 
     def has_or_gets_permission
