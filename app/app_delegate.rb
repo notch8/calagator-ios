@@ -10,7 +10,6 @@ end
 
 class AppDelegate < PM::Delegate
   attr_reader :events
-  #attr_reader :window
   status_bar true, animation: :fade
 
   def on_load(app, options)

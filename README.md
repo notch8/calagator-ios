@@ -17,6 +17,10 @@ Features
 |---|---|
 |![customize](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/options.png)| ![landscape](https://raw.githubusercontent.com/notch8/calagator-ios/master/docs/landscape.png) |
 
+Is the IOS app for other cities who use Calagator?
+--------------------------------------------------
+
+Yep, it sure can be.  Calagator-IOS is open source, under the MIT licence.  Pointing it at your install of Calagator is as easy as changing the CALAGATOR_URL line in the [event model](https://github.com/notch8/calagator-ios/blob/master/app/models/event.rb) file to point to your website.  Changing the colors is done in [application stylesheet](https://github.com/notch8/calagator-ios/blob/master/app/stylesheets/application_stylesheet.rb).  On the wishlist below is adding the ability for users to switch between cities right in the app.  If you use Calagator, and want to be included in the app, open an issue and let us know.
 
 How can you get involved?
 --------------------------
@@ -46,3 +50,4 @@ Wishlist
 ---------
 1. add link to questions/feedback
 2. change menu background to dark gray
+3. add ability to switch which Calagator website the app uses.
