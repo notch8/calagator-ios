@@ -1,5 +1,4 @@
 class Event
-  CALAGATOR_URL = 'http://calagator.org/events.json'
   STALE_AFTER = 59.minutes
   include MotionModel::Model
   include MotionModel::ArrayModelAdapter
@@ -37,7 +36,8 @@ class Event
     end
 
     def async_load &block
-      AFMotion::JSON.get(CALAGATOR_URL) do |result|
+      settings = UserSettings.new
+      AFMotion::JSON.get(settings.base_url) do |result|
         if result.success?
           handle_results(result.object)
           finish_event_load(result.object)
