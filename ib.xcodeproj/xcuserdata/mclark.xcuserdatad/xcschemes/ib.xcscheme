@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "381BD05ADA8383A5B4B528BB"
+               BlueprintIdentifier = "F0B7CDA6D097F76DF96403A1"
                BuildableName = "libib.a"
                BlueprintName = "ib"
                ReferencedContainer = "container:ib.xcodeproj">
@@ -35,14 +35,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "381BD05ADA8383A5B4B528BB"
+            BlueprintIdentifier = "F0B7CDA6D097F76DF96403A1"
             BuildableName = "libib.a"
             BlueprintName = "ib"
             ReferencedContainer = "container:ib.xcodeproj">
@@ -60,7 +60,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "381BD05ADA8383A5B4B528BB"
+            BlueprintIdentifier = "F0B7CDA6D097F76DF96403A1"
             BuildableName = "libib.a"
             BlueprintName = "ib"
             ReferencedContainer = "container:ib.xcodeproj">
@@ -72,6 +72,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Calagator"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

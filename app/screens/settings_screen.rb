@@ -6,7 +6,6 @@ class SettingsScreen < PM::FormotionScreen
     add_side_menu
 
     self.form.row(:remove_alerts).on_tap do |row|
-      puts "tappity"
       UIAlertView.alert('Please Confirm', 'Are you sure you want to remove all your event alerts?',
         buttons: {
           cancel: 'No!',
